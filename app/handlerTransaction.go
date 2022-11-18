@@ -37,10 +37,11 @@ func (c ClientMapRequestAndHandler) makeTransaction(w http.ResponseWriter, r *ht
 		c.MapRequest.domain.AddToMapRequest(&request)
 		fmt.Println(request)
 
-		//Transaction
+		//save Transaction
 		clientResp, err := c.Handler.domain.SaveTransaction(request)
 
-		c.MapRequest.domain.DeleteToMapRequest(&request)
+		//delete request from caheMap
+		c.MapRequest.domain.DeleteFromMapRequest(&request)
 
 		if err != nil {
 			writeResponse(w, http.StatusBadRequest, err.Error())
@@ -48,7 +49,6 @@ func (c ClientMapRequestAndHandler) makeTransaction(w http.ResponseWriter, r *ht
 			writeResponse(w, http.StatusCreated, clientResp)
 		}
 	}
-
 }
 
 func writeResponse(w http.ResponseWriter, code int, data interface{}) {

@@ -34,7 +34,7 @@ func (m *MapRequest) AddToMapRequest(r *dto.ClientRequest) {
 	}
 }
 
-func (m *MapRequest) DeleteToMapRequest(r *dto.ClientRequest) {
+func (m *MapRequest) DeleteFromMapRequest(r *dto.ClientRequest) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
 	for i, val := range m.MapRequestId[r.ClientId] {

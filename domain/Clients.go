@@ -6,7 +6,7 @@ import (
 
 type ClientMapCache interface {
 	AddToMapRequest(r *dto.ClientRequest)
-	DeleteToMapRequest(r *dto.ClientRequest)
+	DeleteFromMapRequest(r *dto.ClientRequest)
 }
 
 type ClientRepository interface {

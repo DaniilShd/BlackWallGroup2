@@ -23,7 +23,7 @@ type ClientMapRequestAndHandler struct {
 func Start() {
 
 	dbClient := getDbClient()
-
+	//Connecting to a database
 	cdb := ClientHandler{domain.NewClientRepositoryDb(dbClient)}
 	// created map for cache request
 	mapRequest := ClientMapRequest{domain.NewMapRequest(dbClient)}
